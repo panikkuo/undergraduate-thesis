@@ -3,3 +3,9 @@ venv
 .virtual_documents
 */.ipynb_checkpoints
 Xray_gen/__pycache__/
+models/v1/*
+models/v2/*
+models/v3/*
+models/v4/*
+models/v5/*
+models/v6/*
