@@ -1,0 +1,43 @@
+Глава 2. Теоретические основы, архитектура и экспериментальные результаты
+
+2.1 Теоретические основы
+    2.1.1 Сравнительный анализ GAN, VAE, DDPM
+    2.1.2 Мотивация выбора DDPM для рентгеновских снимков
+    2.1.3 Базовые блоки DDPM (прямой/обратный процесс, предсказание шума)
+    2.1.4 Cosine noise schedule
+    2.1.5 Min-SNR перевзвешивание функции потерь
+    2.1.6 Self-Attention блоки
+    2.1.7 Временной эмбеддинг (синусоидальное кодирование)
+    2.1.8 U-Net и ResNet блоки в DDPM
+    2.1.9 GroupNorm
+
+2.2 Экспериментальные модели и полученные результаты
+    2.2.1 Модель на MNIST
+        - Архитектура (безусловная и условная)
+        - Результаты (условную придумал сам, оказалось стандартно — это плюс)
+    2.2.2 Ранняя безусловная модель для рентгеновских снимков (неудачная)
+        - Архитектура (5 тыс. снимков, без хорошей обработки)
+        - Результаты (не взлетела, обоснование: мало данных + сложность задачи)
+    2.2.3 Текущая условная модель для рентгеновских снимков
+        - Архитектура (U-Net 128×128, конкатенация маски + class embedding, attention 16×16/8×8)
+        - Результаты (пока не сильно, но небольшие успехи; снижение разрешения с 256 до 128 как эмпирическая борьба с малым объёмом данных)
+
+[1] RadiologyInfo.org – “Chest X-ray (Radiography)”. Статья о эффективности при первой помощи и распространенности: https://www.radiologyinfo.org/en/info/chestrad
+
+[2] WHO Mortality Database. Respiratory infections. Статья о том, что заболевание “легкими” является одной из самых опасных и смертельных болезней https://www.who.int/news-room/fact-sheets/detail/the-top-10-causes-of-death
+
+[3] Nature Communications — “Causality matters in medical imaging”. Статья о том, что высококачественных аннотированных данных мало. https://www.nature.com/articles/s41467-020-17478-w
+
+[4] PLOS Digital Health — “Medical Imaging Data Calls for a Thoughtful and Collaborative Approach to Data Governance”. Статья о сложности передачи медицинских данных. https://journals.plos.org/digitalhealth/article?id=10.1371%2Fjournal.pdig.0001046
+
+[6] Федеральный закон от 27.07.2006 №152-Ф3. https://www.consultant.ru/document/cons_doc_LAW_61801/
+
+[7] DICOM. Просто официальный стандарт: https://dicom.nema.org/medical/dicom/current/output/html/part01.html 
+
+[8] npj Digital Medicine — “Multimodal generative AI for interpreting 3D medical images and videos”. Тут про 16 битный и 8 битные виды картинок. https://www.nature.com/articles/s41746-025-01649-4
+
+[9] ChestX-ray8. Статья про NIH датасет. https://arxiv.org/abs/1705.02315
+
+[10] Frontiers — “Accurate and intelligent diagnosis of pediatric pneumonia using X-ray images and blood testing dat – про датасет, где 5000 сником https://www.frontiersin.org/journals/bioengineering-and-biotechnology/articles/10.3389/fbioe.2023.1058888/full
+
+[11] Moghadam, P. A. Adopting diffusion models for medical image analysis: A survey / P. A. Moghadam [et al.] // Artificial Intelligence Review. – 2023. – Vol. 56. – URL: https://link.springer.com/article/10.1007/s10462-024-10992-z (дата обращения: 12.12.2025).
